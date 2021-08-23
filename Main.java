@@ -2,18 +2,20 @@
 public class Main {
     public static void main(String[] theArgs) {
 
-        Leser Max = new Leser("Max");
-        Leser Lars = new Leser("Lars");
-        NewsPaper anAllgemeineZeitung = new NewsPaper();
+        // create topics
+        ConcreteSubject SportNews = new ConcreteSubject();
+        ConcreteSubject PoliticsNews = new ConcreteSubject();
 
-        // add observer
-        anAllgemeineZeitung.AddNewsFeed(Max);
-        anAllgemeineZeitung.AddNewsFeed(Lars);
+        // create readers
+        ConcreteObserver Max = new ConcreteObserver("Max");
+        ConcreteObserver Lars = new ConcreteObserver("Lars");
 
-        // etwas passiert
-        anAllgemeineZeitung.SetNews("Weltkrieg");
+        // add observer to topics
+        SportNews.Add(Max);
+        PoliticsNews.Add(Lars);
 
-        // notify observer
-        anAllgemeineZeitung.NotifyNewsfeeds();
+        // state changes
+        SportNews.SetState("GOAAL for GERMANY!!", true);
+        PoliticsNews.SetState("Merkel decides: Free beer for every goal!", false);
     }
 }
