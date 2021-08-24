@@ -1,4 +1,4 @@
-import java.rmi.NotBoundException;
+import java.util.List;
 
 public class ConcreteObserver implements Observer {
 
@@ -8,18 +8,40 @@ public class ConcreteObserver implements Observer {
         m_Name = theName;
     }
 
-    // PUSH
     @Override
-    public void Update(String theState) {
-        System.out.println(m_Name + ": " + theState);
+    public void Update(Object theState) {
 
+        Object aState;
+        String aNewsAnnouncer;
+
+        // state gets PULLed
+        if (theState instanceof ConcreteSubject) {
+            ConcreteSubject subjectState = (ConcreteSubject) theState;
+            aState = subjectState.GetState();
+            aNewsAnnouncer = "Pulled news for " + m_Name + ": ";
+        }
+        // state is PUSHed
+        else {
+            aState = theState;
+            aNewsAnnouncer = "Pushed news for " + m_Name + ": ";
+        }
+
+        // progress different state datatypes
+        if (aState instanceof String) {
+            String stringState = (String) aState;
+            System.out.println(aNewsAnnouncer + stringState);
+        } else if (aState instanceof Integer) {
+            int intState = (int) aState;
+            System.out.println(aNewsAnnouncer + "Your lucky number is " + intState);
+        } else if (aState instanceof List<?>) {
+            List<Integer> listState = (List<Integer>) aState;
+            System.out.println(aNewsAnnouncer + "Your lotto numbers are");
+            for (Integer integer : listState) {
+                System.out.print(integer + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("Wrong datatype.");
+        }
     }
-
-    // PULL
-    @Override
-    public void Update(ConcreteSubject theSubject) {
-        System.out.println(m_Name + ": " + theSubject.GetState());
-
-    }
-
 }

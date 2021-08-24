@@ -14,20 +14,14 @@ public abstract class Subject {
     }
 
     // PUSH: send state directly with notification
-    protected void notify(String theState) {
+    // PULL: notify with concreteSubject and let observer pull state
+    protected void notify(Object theState) {
         for (Observer observer : m_ObserverList) {
             observer.Update(theState);
         }
     }
 
-    // PULL: notify with concreteSubject and let observer pull state
-    protected void notify(ConcreteSubject theConcreteSubject) {
-        for (Observer observer : m_ObserverList) {
-            observer.Update(theConcreteSubject);
-        }
-    }
+    public abstract void SetState(Object theState, Boolean theIsPush);
 
-    public abstract void SetState(String theState, Boolean theIsPush);
-
-    public abstract String GetState();
+    public abstract Object GetState();
 }

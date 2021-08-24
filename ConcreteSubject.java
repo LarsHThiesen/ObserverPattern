@@ -2,23 +2,22 @@
 // ConcreteSubject
 public class ConcreteSubject extends Subject {
 
-    // state could be int, bool, object, ...
-    private String m_State;
+    // state could be int, bool, string, ...
+    private Object m_State;
 
-    public void SetState(String theState, Boolean theIsPush) {
+    public void SetState(Object theState, Boolean theIsPush) {
         m_State = theState;
-
         if (theIsPush) {
-            // PUSH: notify with state
-            super.notify(m_State);
+            // PUSH: send state
+            notify(m_State);
         } else {
-            // PULL: notify with concreteSubject
-            super.notify(this);
-
+            // PULL: notify with changed ConcreteSubject
+            notify(this);
         }
     }
 
-    public String GetState() {
+    // pull current state
+    public Object GetState() {
         return m_State;
     }
 }
