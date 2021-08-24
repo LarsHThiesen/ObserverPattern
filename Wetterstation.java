@@ -1,13 +1,16 @@
 import java.util.ArrayList;
 
-public class Wetterstation implements Observable {
+public class Wetterstation extends Object implements Observable {
 
+    private String name;
     private int temperatur;
     private ArrayList<Observer> observers;
 
-    public Wetterstation(int temperatur) {
+    // constructor mit Name und Temperatur
+    public Wetterstation(String name, int temperatur) {
+        this.name = name;
         this.temperatur = temperatur;
-        observers = new ArrayList<Observer>(); 
+        observers = new ArrayList<Observer>();
     }
 
     @Override
@@ -20,19 +23,31 @@ public class Wetterstation implements Observable {
         observers.remove(obs);
     }
 
+    // pull method needs observable for the pull
     @Override
     public void notifyObserver() {
-        for(Observer obs : observers){
-            obs.update();
+        for (Observer obs : observers) {
+            obs.update(this);
         }
     }
 
-    public int getTemperatur(){
+    // getter für Temperatur
+    public int getTemperatur() {
         return temperatur;
     }
 
+    // setter für Temperatur benachrichtigt Observer
     public void setTemperatur(int temperatur) {
-        this.temperatur = temperatur;
+        // verhindert spam
+        if (this.temperatur != temperatur) {
+            this.temperatur = temperatur;
+            notifyObserver();
+        }
     }
-    
-}   
+
+    // getter für Name
+    public String getName(){
+        return name;
+    }
+
+}
