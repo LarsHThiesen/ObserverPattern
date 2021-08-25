@@ -5,7 +5,7 @@ public class Wetterstudio implements Observer {
         if (object instanceof Wetterstation) {
             Wetterstation station = (Wetterstation) object;
             System.out.println("Die Temperatur der Wetterstation " + station.getName() + " hat sich auf "
-                    + station.getTemperatur() + " Grad Celsius gendert");
+                    + station.getTemperatur() + " Grad Celsius geändert");
         } else {
             System.out.println("Wrong datatype.");
         }
