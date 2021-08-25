@@ -1,5 +1,5 @@
 
-// ConcreteSubject
+// ConcreteObservable
 public class ConcreteSubject extends Subject {
 
     // state could be int, bool, string, ...
@@ -8,10 +8,10 @@ public class ConcreteSubject extends Subject {
     public void SetState(Object theState, Boolean theIsPush) {
         m_State = theState;
         if (theIsPush) {
-            // Push-Update: send notification about changed state + updated data
+            // Push-Update notiication: send notification about changed state + updated data
             notify(m_State);
         } else {
-            // Push: send notification about changed state withoug data
+            // Push notification: send notification about changed state withoug data
             notify(this);
         }
     }

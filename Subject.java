@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+// observable
 public abstract class Subject {
 
     private final List<Observer> m_ObserverList = new ArrayList<Observer>();
@@ -13,8 +14,8 @@ public abstract class Subject {
         m_ObserverList.remove(theObserver);
     }
 
-    // Push-Update: send data directly with changed state
-    // Push: notify about changes and let observer pull data
+    // Push-Update notification: send data directly with changed state
+    // Push notiication: notify about changes and let observer pull data
     protected void notify(Object theState) {
         for (Observer observer : m_ObserverList) {
             observer.Update(theState);

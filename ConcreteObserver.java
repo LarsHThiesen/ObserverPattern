@@ -18,12 +18,12 @@ public class ConcreteObserver implements Observer {
         if (theState instanceof ConcreteSubject) {
             ConcreteSubject subjectState = (ConcreteSubject) theState;
             aState = subjectState.GetState();
-            aNewsAnnouncer = "Push news for " + m_Name + ": ";
+            aNewsAnnouncer = "Push notification for " + m_Name + ": ";
         }
         // state is pushed and updated data sent
         else {
             aState = theState;
-            aNewsAnnouncer = "Push-Update news for " + m_Name + ": ";
+            aNewsAnnouncer = "Push-Update notification for " + m_Name + ": ";
         }
 
         // progress different state datatypes
