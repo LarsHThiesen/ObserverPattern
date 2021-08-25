@@ -14,16 +14,16 @@ public class ConcreteObserver implements Observer {
         Object aState;
         String aNewsAnnouncer;
 
-        // state gets PULLed
+        // state gets pull afterwards
         if (theState instanceof ConcreteSubject) {
             ConcreteSubject subjectState = (ConcreteSubject) theState;
             aState = subjectState.GetState();
-            aNewsAnnouncer = "Pulled news for " + m_Name + ": ";
+            aNewsAnnouncer = "Push news for " + m_Name + ": ";
         }
-        // state is PUSHed
+        // state is pushed and updated data sent
         else {
             aState = theState;
-            aNewsAnnouncer = "Pushed news for " + m_Name + ": ";
+            aNewsAnnouncer = "Push-Update news for " + m_Name + ": ";
         }
 
         // progress different state datatypes

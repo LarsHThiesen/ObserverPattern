@@ -13,8 +13,8 @@ public abstract class Subject {
         m_ObserverList.remove(theObserver);
     }
 
-    // PUSH: send state directly with notification
-    // PULL: notify with concreteSubject and let observer pull state
+    // Push-Update: send data directly with changed state
+    // Push: notify about changes and let observer pull data
     protected void notify(Object theState) {
         for (Observer observer : m_ObserverList) {
             observer.Update(theState);

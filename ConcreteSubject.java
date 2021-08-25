@@ -8,15 +8,15 @@ public class ConcreteSubject extends Subject {
     public void SetState(Object theState, Boolean theIsPush) {
         m_State = theState;
         if (theIsPush) {
-            // PUSH: send state
+            // Push-Update: send notification about changed state + updated data
             notify(m_State);
         } else {
-            // PULL: notify with changed ConcreteSubject
+            // Push: send notification about changed state withoug data
             notify(this);
         }
     }
 
-    // pull current state
+    // pull current data
     public Object GetState() {
         return m_State;
     }
