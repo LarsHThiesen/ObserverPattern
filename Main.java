@@ -13,7 +13,6 @@ public class Main {
 
         // Studios registrieren sich bei Stationen
         station1.addObserver(nrwStudio);
-        station1.addObserver(nrwStudio);
         station1.addObserver(sachsenStudio);
         station1.addObserver(bayernStudio);
         station2.addObserver(sachsenStudio);
